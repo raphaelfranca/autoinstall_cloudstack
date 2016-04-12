@@ -1,4 +1,9 @@
 #!/bin/sh
+clear
+
+setenforce 0 >> /dev/null 2>&1
+
+LOG=/root/autoinstall_cloudstack.log
 
 SSH_PUBLIC_KEY='insert_your_ssh_public_key_here'
 
