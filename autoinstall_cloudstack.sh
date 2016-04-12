@@ -11,7 +11,7 @@ function add_ssh_public_key() {
 }
 
 function get_network_info() {
-    echo '* Configuração do Cloud Agent'
+    echo '* Configuracao do Cloud Agent'
     read -p ' hostname   (ex:cloudstack)   : ' HOSTNAME
     read -p ' ip address (ex:192.168.1.2)  : ' IPADDR
     read -p ' netmask    (ex:255.255.255.0): ' NETMASK
@@ -21,14 +21,14 @@ function get_network_info() {
 }
 
 function get_nfs_info() {
-    echo '* Configuração do NFS Server'
+    echo '* Configuracao do NFS Server'
     read -p ' NFS Server IP: ' NFS_SERVER_IP
     read -p ' Primary mount point   (ex:/export/primary)  : ' NFS_SERVER_PRIMARY
     read -p ' Secondary mount point (ex:/export/secondary): ' NFS_SERVER_SECONDARY
 }
 
 function get_nfs_network() {
-    echo '* Configuração do NFS Server'
+    echo '* Configuracao do NFS Server'
     read -p ' Aceitar acesso de (ex:192.168.1.0/24): ' NETWORK
 }
 
@@ -228,7 +228,7 @@ then
   -a : instalar cloud agent
   -m : instalar management server
   -h : exibir esta ajuda
-  -r : reiniciar após a instalação"
+  -r : reiniciar apos a instalacao"
     exit 1
 fi
 
