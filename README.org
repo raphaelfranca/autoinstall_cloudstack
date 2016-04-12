@@ -1,44 +1,44 @@
-* What is this?
+* O que é isso?
 
-  This is an easy installation script for CloudStack 4.x.
-  This script automates installation on a fresh CentOS 6.x node by using minimal netinstall.
-  All you have to do is running this script with options '-canm'.
-  After a while you will see welcome message on the CloudStack web UI.
+  Este é um script de instalação fácil para CloudStack 4.x.
+  Este scrip automatiza a instalação em um novo node CentOS 6.x minimal.
+  Tudo que você tem a fazer é executar esse script com opções '-canm'.
+  Depois de algum tempo você vai ver mensagem de boas-vindas no CloudStack web UI.
 
-  This script also saves installation steps of CloudStack on multiple nodes
-  with Management Servers, Computing Nodes and Storage Servers.
+  Este script também economiza etapas de instalação de CloudStack em múltiplos nodes
+  com Management Servers, Computing Nodes and Storage Servers.
 
-* How to use
+* Como usar
 
-  Download this script into wherever you like on the server that CloudStack will be installed.
-  When you run this script with '-h'(help) optoin, you will see available options for the script.
+  Faça o download deste script para onde quiser no servidor que CloudStack será instalado.
+  Quando você executar este script com '-h'(help) opção, você vai ver as opções disponíveis para o script.
   : ./autoinstall_cloudstack.sh -h
 
-** Options
-     | Option | Function                              |
-     | -c     | install the common packages           |
-     | -n     | install NFS server                    |
-     | -a     | install the agent for computing nodes |
-     | -m     | install the Management Server         |
-     | -h     | show help                             |
-     | -r     | reboot after the installation         |
-     Usage:
-       - '-cm': when you want to install only the management server
-       - '-cn': when you want to install only the NFS server
-       - '-ca': when you want to install only the agent for computing nodes
-     The '-c'(common) option will set SELinux to permissive, firewall and network.
+** Opções
+     | Opção  | Função                                 |
+     | -c     | instalar pacotes comuns                |
+     | -n     | instalar NFS server                    |
+     | -a     | instalar o agente para computing nodes |
+     | -m     | instalar o Management Server           |
+     | -h     | exibir ajuda                           |
+     | -r     | reiniciar após a instalação            |
+     Uso:
+       - '-cm': quando você quiser instalar apenas o management server
+       - '-cn': quando você quiser instalar apenas o NFS server
+       - '-ca': quando você quiser instalar apenas o agente para computing nodes
+     A '-c'(common) opção definirá SELinux para permissive, firewall and network.
 
-     Installing CloudStack on single node, type command bellow:
+     Instalando CloudStack on único node, digite o comando abaixo:
      : ./autoinstall_cloudstack.sh -cnamr
 
-** Tips
-  - You may need to install 'wget' or 'openssh-clients' package with yum command before downloading this script.
-  - If you want to save time to input credentials to login by SSH, enter the ssh public key of your client machine to SSH_PUBLIC_KEY at the 3rd line of the script (optional).
+** dicas
+  - Você vai precisar instalar 'wget' ou pacote 'openssh-clients' com o comando yum antes de baixar esse script.
+  - Se você quiser economizar tempo para as credenciais de entrada para acessar por SSH, insira a chave pública ssh da sua máquina cliente em SSH_PUBLIC_KEY na 3ª linha do script (opcional).
 
-* Concerns
-  This script sets up the network for CloudStack requirements automatically, and it may works only on servers with 1 NIC. 
+* Preocupações
+  Este script configura a rede para os requisitos CloudStack automaticamente e poderá funciona apenas em servidores com 1 NIC. 
 
-  This script sets up network bridges as:
+  Este script configura bridges de rede como:
   : # brctl show
   : bridge name bridge id               STP enabled     interfaces
   : cloud0      8000.fe00a9fe0074       no              vnet0
@@ -51,19 +51,19 @@
   :                                                     vnet6
   : virbr0      8000.52540079e395       yes             virbr0-nic
 
-* Steps to install CloudStack on single server
-  - Install CentOS 6.X from the netinstall disk.
-  - Install and configure CloudStack
+* Passos para instalar CloudStack em único servidor
+  - Instalar o CentOS 6.X minimal.
+  - Instalar e configurar CloudStack
     : yum install wget -y
     : wget http://bit.ly/AutoCSsh
     : sh ./autoinstall_cloudstack.sh -cnmar
-  - Enter some informantion which is necessary for installation such as hostname and ip address.
-  - The management server will be rebooted automatically. After rebooting,
-    access "http://YOUR-MANAGEMENT-SERVER-IP:8080/client" by using web browser on a client machine.
-  - Enter the username and password below.
+  - Inserir informações que são necessárias para a instalação, como hostname e endereço de ip.
+  - O management server será reiniciado automaticamente. Após reiniciar,
+    acesse "http://YOUR-MANAGEMENT-SERVER-IP:8080/client" usando o navegador web em uma máquina cliente.
+  - Digite o nome de usuário e senha abaixo.
     + username: admin
     + password: password
-  - Enter the information of your cloud system through the Basic Installation Wizard.
-  - *!DO NOT FORGET!* After creating a zone, reboot the SecondaryStorageVM.
-  - Go to Infrastructure => System VMs => s-1-VM => click Reboot System VM button (icon of whirling arrow)
-  - Go to Templates => CentOS 5.5 => Wait until "Ready" status changes from "" to "Yes".
+  - Inseir as informações do seu cloud através do Wizard.
+  - *!NÃO ESQUEÇA!* Depois de criar uma zona, reinicie o SecondaryStorageVM.
+  - Acesse Infrastructure => System VMs => s-1-VM => click Reboot System VM button (ícone da seta girando)
+  - Acesse Templates => CentOS 5.5 => Espere até o status "Ready" mudar para "Yes".
