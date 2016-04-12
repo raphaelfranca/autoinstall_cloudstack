@@ -11,7 +11,7 @@ function add_ssh_public_key() {
 }
 
 function get_network_info() {
-    echo '* settings for cloud agent'
+    echo '* Configuração do Cloud Agent'
     read -p ' hostname   (ex:cloudstack)   : ' HOSTNAME
     read -p ' ip address (ex:192.168.1.2)  : ' IPADDR
     read -p ' netmask    (ex:255.255.255.0): ' NETMASK
@@ -21,15 +21,15 @@ function get_network_info() {
 }
 
 function get_nfs_info() {
-    echo '* settings for nfs server'
+    echo '* Configuração do NFS Server'
     read -p ' NFS Server IP: ' NFS_SERVER_IP
     read -p ' Primary mount point   (ex:/export/primary)  : ' NFS_SERVER_PRIMARY
     read -p ' Secondary mount point (ex:/export/secondary): ' NFS_SERVER_SECONDARY
 }
 
 function get_nfs_network() {
-    echo '* settings for nfs server'
-    read -p ' accept access from (ex:192.168.1.0/24): ' NETWORK
+    echo '* Configuração do NFS Server'
+    read -p ' Aceitar acesso de (ex:192.168.1.0/24): ' NETWORK
 }
 
 function install_common() {
@@ -51,7 +51,7 @@ gpgcheck=0" > /etc/yum.repos.d/CloudStack.repo
 }
 
 function install_management() {
-    yum install cloudstack-management mysql-server expect -y
+    yum install cloudstack-management cloudstack-usage mysql-server expect -y
 
     head -7 /etc/my.cnf > /tmp/before
     tail -n +7 /etc/my.cnf > /tmp/after
@@ -223,12 +223,12 @@ shift $(( $OPTIND - 1 ))
 if [ $OPT_ERROR ]
 then
     echo >&2 "usage: $0 [-cnamhr]
-  -c : install common packages
-  -n : install nfs server
-  -a : install cloud agent
-  -m : install management server
-  -h : show this help
-  -r : reboot after installation"
+  -c : instalar pacotes comuns
+  -n : instalar nfs server
+  -a : instalar cloud agent
+  -m : instalar management server
+  -h : exibir esta ajuda
+  -r : reiniciar após a instalação"
     exit 1
 fi
 
