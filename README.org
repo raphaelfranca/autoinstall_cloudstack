@@ -31,7 +31,7 @@
      Instalando CloudStack on único node, digite o comando abaixo:
      : ./autoinstall_cloudstack.sh -cnamr
 
-** dicas
+** Dicas
   - Você vai precisar instalar 'wget' ou pacote 'openssh-clients' com o comando yum antes de baixar esse script.
   - Se você quiser economizar tempo para as credenciais de entrada para acessar por SSH, insira a chave pública ssh da sua máquina cliente em SSH_PUBLIC_KEY na 3ª linha do script (opcional).
 
